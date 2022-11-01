@@ -3,23 +3,22 @@
     <div class="mx-auto max-w-lg backdrop-blur bg-white/50 rounded-2xl">
       <div class="Img">
         <img
-          src="@/public/images/logos/logo-black.svg"
+          src="@/assets/images/logos/logo-black.svg"
           alt="musion"
           class="mx-auto px-12 py-8"
         />
       </div>
       <div class="TextDescription">
         <h1 class="text-center text-2xl text-black sm:text-3xl">
-          Get started today
+          Bienvenido a Musion
         </h1>
 
         <p class="mx-6 mt-4 max-w-xl text-center">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente
-          ipsum repellat dicta voluptatum?
+          Inicia sesión para empezar a conocer todos los museos de CDMX
         </p>
       </div>
 
-      <div class="mx-6 mt-4">
+      <form class="mx-6 mt-4" @submit="onSubmit">
         <div class="mt-2">
           <label
             class="relative block overflow-hidden rounded-md border border-black px-3 pt-3"
@@ -63,10 +62,10 @@
         </div>
 
         <div class="my-6 flex justify-between">
-          <v-btn color="success" @click="validate"> Register </v-btn>
-          <v-btn color="warning" @click="resetValidation"> Login </v-btn>
+          <v-btn color="success" @click="goToRegister"> Register </v-btn>
+          <v-btn color="warning" @click="validateEmail"> Login </v-btn>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -76,6 +75,22 @@ export default {
   methods: {
     goToRegister() {
       this.$router.push("/register");
+    },
+    onSubmit(values) {
+      console.log(values, null, 2);
+    },
+    validateEmail(value) {
+      // if the field is empty
+      if (!value) {
+        return "This field is required";
+      }
+      // if the field is not a valid email
+      const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+      if (!regex.test(value)) {
+        return "This field must be a valid email";
+      }
+      // All is good
+      return true;
     },
   },
 };

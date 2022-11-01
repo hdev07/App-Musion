@@ -17,11 +17,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.size-image {
-  max-width: 14rem !important;
-}
-.padding-top {
-  padding-top: 20%;
-}
-</style>
+<style scoped></style>

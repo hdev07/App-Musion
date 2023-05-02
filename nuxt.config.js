@@ -64,10 +64,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    // Aquí se especifica la carpeta de salida
-    // Si no se especifica, Nuxt usará la carpeta por defecto: `dist`
-    dir: "build",
-
     postcss: {
       postcssOptions: {
         plugins: {

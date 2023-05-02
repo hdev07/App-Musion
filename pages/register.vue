@@ -1,18 +1,14 @@
 <template>
-  <div id="register-page" class="bg-img h-screen w-full">
-    <Register />
+  <div>
+    <h1 class="text-center">Hola Soy el register y tampoco sirvo para nada</h1>
+    <router-link to="/" class="text-xs underline text-center mt-4">
+      Return
+    </router-link>
   </div>
 </template>
 
 <script>
-import Register from "~/components/auth/registerForm";
-export default {
-  auth: false,
-  layout: "empty",
-  components: { Register },
-  data: () => ({}),
-  methods: {},
-};
+export default {};
 </script>
 
-<style scoped></style>
+<style></style>

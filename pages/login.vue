@@ -1,20 +1,14 @@
 <template>
-  <div id="login-page" class="bg-img h-screen w-full">
-    <Login :redirect="redirect" />
+  <div>
+    <h1 class="text-center">Hola Soy el login y no sirvo para nada</h1>
+    <router-link to="/" class="text-xs underline text-center mt-4">
+      Return
+    </router-link>
   </div>
 </template>
 
 <script>
-import Login from "~/components/auth/loginForm";
-export default {
-  auth: false,
-  layout: "empty",
-  components: { Login },
-  data: () => ({
-    redirect: undefined,
-  }),
-  methods: {},
-};
+export default {};
 </script>
 
-<style scoped></style>
+<style></style>

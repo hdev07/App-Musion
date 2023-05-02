@@ -53,10 +53,10 @@ export default {
   },
   methods: {
     nextStep() {
-      this.$emit("nextStep", true);
+      this.$emit("next", true);
     },
     previousStep() {
-      this.$emit("previousStep", true);
+      this.$emit("previous", true);
     },
     createAcount() {
       this.$router.push("/register");

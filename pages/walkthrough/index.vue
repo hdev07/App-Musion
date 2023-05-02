@@ -6,7 +6,7 @@
       :title="title1"
       :desc="desc1"
       :step="1"
-      @next-step="nextStep()"
+      @next="nextStep()"
     />
     <Card
       v-if="step === 2"
@@ -14,8 +14,8 @@
       :title="title2"
       :desc="desc2"
       :step="2"
-      @netx-step="nextStep()"
-      @previos-step="previousStep()"
+      @next="nextStep()"
+      @previos="previousStep()"
     />
     <Card
       v-if="step === 3"
@@ -23,7 +23,7 @@
       :title="title3"
       :desc="desc3"
       :step="3"
-      @previos-step="previousStep()"
+      @previos="previousStep()"
     />
   </div>
 </template>

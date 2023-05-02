@@ -17,7 +17,7 @@
         </p>
         <span
           rel="noopener noreferrer"
-          class="px-8 py-3 font-semibold rounded-full dark:bg-[#F48FB1] dark:text-white"
+          class="px-8 py-3 font-semibold rounded-full dark:bg-[#FF4081] dark:text-white"
           @click.prevent="back"
           >Back to homepage</span
         >

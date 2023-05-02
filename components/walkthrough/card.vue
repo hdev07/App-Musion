@@ -8,7 +8,7 @@
       />
     </div>
     <div
-      class="absolute bottom-0 w-full h-72 rounded-t-[30px] shadow-md dark:bg-[#212120] dark:text-gray-100"
+      class="absolute bottom-0 w-full h-100 rounded-t-[30px] shadow-md bg-gray-300 dark:bg-[#212120] dark:text-gray-100"
     >
       <div>
         <div class="mt-8">
@@ -24,13 +24,13 @@
         >
           <router-link to="/login" class="text-xs underline">Skip</router-link>
           <div class="w-1/3 justify-end">
-            <v-btn color="#F48FB1" block outlined rounded @click="nextStep()">
+            <v-btn color="#FF4081" block outlined rounded @click="nextStep()">
               Next
             </v-btn>
           </div>
         </div>
         <div v-else class="flex justify-between m-8 py-4 items-center">
-          <v-btn color="#F48FB1" block fill rounded @click="createAcount()">
+          <v-btn color="#FF4081" block fill rounded @click="createAcount()">
             create acount
           </v-btn>
         </div>

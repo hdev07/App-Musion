@@ -14,7 +14,7 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#F48FB1" },
+      { name: "theme-color", content: "#FF4081" },
       {
         hid: "description",
         name: "description",
@@ -24,7 +24,7 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   loading: {
-    color: "#F48FB1",
+    color: "#FF4081",
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["@/assets/css/main.css"],
@@ -64,10 +64,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    // Aquí se especifica la carpeta de salida
-    // Si no se especifica, Nuxt usará la carpeta por defecto: `dist`
-    dir: "build",
-
     postcss: {
       postcssOptions: {
         plugins: {

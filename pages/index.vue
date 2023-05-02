@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#F48FB1] flex justify-center w-full h-screen">
+  <div class="bg-[#FF4081] flex justify-center w-full h-screen">
     <div v-if="device !== 'smartphone'">
       <MsgDevice />
     </div>
@@ -32,7 +32,7 @@ export default {
       this.loading = false;
       if (this.$device.machine.type === "smartphone")
         this.$router.push("/walkthrough");
-    }, 5000);
+    }, 1000);
   },
   methods: {},
 };

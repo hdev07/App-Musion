@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Card
+    <CardWalkthrough
       v-if="step === 1"
       :img="img1"
       :title="title1"
@@ -8,7 +8,7 @@
       :step="1"
       @next="nextStep()"
     />
-    <Card
+    <CardWalkthrough
       v-if="step === 2"
       :img="img2"
       :title="title2"
@@ -17,7 +17,7 @@
       @next="nextStep()"
       @previos="previousStep()"
     />
-    <Card
+    <CardWalkthrough
       v-if="step === 3"
       :img="img3"
       :title="title3"
@@ -29,9 +29,10 @@
 </template>
 
 <script>
-import Card from "../../components/walkthrough/card.vue";
+import CardWalkthrough from "../../components/walkthrough/cardWalkthrough.vue";
 export default {
-  components: { Card },
+  components: { CardWalkthrough },
+  layout: "empty",
   data() {
     return {
       img1: "https://s3.amazonaws.com/musion.day/walkthrough_1.png",

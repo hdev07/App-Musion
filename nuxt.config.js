@@ -30,7 +30,11 @@ export default {
   css: ["@/assets/css/main.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: "~/plugins/device.js", ssr: false }],
+  plugins: [
+    "~/mixins/utilsMixins",
+    { src: "~/plugins/device.js", ssr: false },
+    { src: "~/plugins/vee-validate.js", ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -48,18 +52,6 @@ export default {
     name: "Musion",
     lang: "es",
     display: "standalone",
-  },
-
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
-  vuetify: {
-    theme: {
-      themes: {
-        light: {
-          primary: "#e60000",
-          secondary: "#424242",
-        },
-      },
-    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

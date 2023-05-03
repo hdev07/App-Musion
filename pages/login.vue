@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <h1 class="text-center">Hola Soy el login y no sirvo para nada</h1>
-    <router-link to="/" class="text-xs underline text-center mt-4">
-      Return
-    </router-link>
-  </div>
+  <Login />
 </template>
 
 <script>
-export default {};
+import Login from "@/components/auth/loginForm";
+export default {
+  layout: "empty",
+  components: { Login },
+};
 </script>
-
-<style></style>

@@ -32,8 +32,11 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/mixins/utilsMixins",
+    "~/plugins/globalComponents",
+    "~/plugins/vuesax",
     { src: "~/plugins/device.js", ssr: false },
     { src: "~/plugins/vee-validate.js", ssr: false },
+    { src: "~/plugins/axios.js", ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -43,10 +46,28 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     "@nuxtjs/vuetify",
+    "@nuxtjs/tailwindcss",
   ],
 
+  vuetify: {
+    theme: {
+      themes: {
+        light: {
+          primary: "#F48FB1",
+        },
+        // dark: {
+        //   primary: "#FF4081",
+        // },
+      },
+    },
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/pwa", "@nuxtjs/dotenv"],
+  modules: ["@nuxtjs/pwa", "@nuxtjs/dotenv", "@nuxtjs/axios"],
+
+  axios: {
+    baseURL: "http://localhost:5000/api/v1",
+  },
 
   manifest: {
     name: "Musion",

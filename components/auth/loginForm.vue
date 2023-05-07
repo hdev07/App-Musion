@@ -7,8 +7,13 @@
       <div>
         <switchForm :from="from" />
         <div class="mx-4 py-2 text-center">
-          <v-text-field v-model="email" label="Email" outlined />
-          <v-text-field v-model="password" label="Password" outlined />
+          <v-text-field v-model="email" type="email" label="Email" outlined />
+          <v-text-field
+            v-model="password"
+            type="password"
+            label="Password"
+            outlined
+          />
         </div>
         <div class="mx-8 my-2">
           <v-btn color="primary" block fill rounded @click="login()">
@@ -17,7 +22,7 @@
         </div>
         <div class="flex justify-center">
           <p class="text-sm">Forgotton your pasword?</p>
-          <a class="text-sm underline pl-1">Reset password</a>
+          <a href="#" class="text-sm underline pl-1">Reset password</a>
         </div>
         <v-divider class="mx-2"> Or Sign Up with </v-divider>
         <SocialForm class="mt-8" />

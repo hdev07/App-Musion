@@ -7,10 +7,16 @@
       <div>
         <SwitchForm :from="from" />
         <div class="mx-4 py-2 text-center">
-          <v-text-field v-model="name" label="Name" outlined />
-          <v-text-field v-model="email" label="Email" outlined />
-          <v-text-field v-model="password" label="Password" outlined />
+          <v-text-field v-model="name" type="text" label="Name" outlined />
+          <v-text-field v-model="email" type="email" label="Email" outlined />
           <v-text-field
+            v-model="password"
+            type="password"
+            label="Password"
+            outlined
+          />
+          <v-text-field
+            type="password"
             v-model="rePassword"
             label="Confirm Password"
             outlined

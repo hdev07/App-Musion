@@ -5,8 +5,8 @@
         rounded
         block
         color="primary"
-        :outlined="from === 'login'"
-        :fill="from === 'login'"
+        :outlined="from !== 'login'"
+        :fill="from !== 'login'"
         @click="goToLogin()"
       >
         login
@@ -17,8 +17,8 @@
         block
         rounded
         color="primary"
-        :outlined="from === 'register'"
-        :fill="from === 'register'"
+        :outlined="from !== 'register'"
+        :fill="from !== 'register'"
         @click="goToRegister()"
       >
         Register

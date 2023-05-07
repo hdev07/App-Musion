@@ -10,7 +10,7 @@
           <v-text-field v-model="email" label="Email" outlined />
           <v-text-field v-model="password" label="Password" outlined />
         </div>
-        <div class="mx-8 my-24">
+        <div class="mx-8 my-2">
           <v-btn color="primary" block fill rounded @click="login()">
             Sign In
           </v-btn>
@@ -20,7 +20,7 @@
           <a class="text-sm underline pl-1">Reset password</a>
         </div>
         <v-divider class="mx-2"> Or Sign Up with </v-divider>
-        <SocialForm />
+        <SocialForm class="mt-8" />
       </div>
     </div>
   </div>

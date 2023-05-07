@@ -3,45 +3,39 @@ import Vue from "vue";
 Vue.mixin({
   methods: {
     showSuccessAlert(message) {
-      this.$v.Alert({
+      this.$vs.notification({
         title: "Success",
-        text: message,
         color: "success",
+        text: message,
+        flat: true,
+        position: "top-right",
+        duration: 4000,
+        progress: "auto",
       });
     },
 
     showErrorAlert(message) {
-      this.$v.Alert({
+      this.$vs.notification({
         title: "Error",
-        text: message,
         color: "danger",
+        text: message,
+        flat: true,
+        position: "top-right",
+        duration: 4000,
+        progress: "auto",
       });
     },
 
     showWarningAlert(message) {
-      this.$v.Alert({
+      this.$vs.notification({
         title: "Hold on!",
-        text: message,
         color: "warning",
+        text: message,
+        flat: true,
+        position: "top-right",
+        duration: 4000,
+        progress: "auto",
       });
-    },
-
-    toggleLoading(container, status, type = "default") {
-      try {
-        if (container) {
-          if (status)
-            return this.$vs.loading({
-              type,
-              container: `#${container}`,
-              text: "Cargando...",
-            });
-          return this.$vs.loading.close(`#${container} > .con-vs-loading`);
-        }
-        if (status) return this.$vs.loading();
-        return this.$vs.loading.close();
-      } catch (error) {
-        console.error(error);
-      }
     },
   },
 });

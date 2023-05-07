@@ -1,19 +1,17 @@
 <template>
-  <div class="bg-gray-100 dark:bg-[#1A1A1A] h-screen">
+  <div class="h-screen">
     <div class="">
       <p class="text-center text-3xl py-2 my-8">Login</p>
     </div>
-    <div
-      class="fixed bottom-0 w-full min-h-[60%] rounded-t-[30px] bg-gray-200 dark:bg-[#212120] dark:text-gray-100"
-    >
+    <div class="fixed bottom-0 w-full min-h-[60%] rounded-t-[30px] bg-gray-100">
       <div>
-        <switchForm />
+        <switchForm :from="from" />
         <div class="mx-4 py-2 text-center">
-          <v-text-field label="Email" outlined />
-          <v-text-field label="Password" outlined />
+          <v-text-field v-model="email" label="Email" outlined />
+          <v-text-field v-model="password" label="Password" outlined />
         </div>
         <div class="mx-8 my-2">
-          <v-btn color="primary" block outlined rounded @click="nextStep()">
+          <v-btn color="primary" block fill rounded @click="login()">
             Sign In
           </v-btn>
         </div>
@@ -37,6 +35,49 @@ export default {
   components: {
     switchForm,
     SocialForm,
+  },
+  data() {
+    return {
+      from: "login",
+      email: "",
+      password: "",
+      token: "",
+      expiresIn: "",
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        const body = {
+          email: this.email,
+          password: this.password,
+        };
+
+        const res = await this.$axios.post("/auth/login", body);
+        if (res.status === 200) {
+          this.token = res.data?.token;
+          this.expiresIn = res.data?.expires;
+          this.refreshToken();
+        }
+      } catch (error) {
+        console.error(error);
+        this.showErrorAlert("Error del servidor");
+      }
+    },
+    async refreshToken() {
+      try {
+        const res = await this.$axios.get("/auth/refresh");
+        if (res.status === 200) {
+          this.showSuccessAlert("Usuario logueado con exito");
+          this.token = res.data?.token;
+          this.expiresIn = res.data?.expires;
+          this.$router.push("/home");
+        }
+      } catch (error) {
+        console.error(error);
+        this.showErrorAlert("Error del servidor");
+      }
+    },
   },
 };
 </script>

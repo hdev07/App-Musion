@@ -66,7 +66,7 @@ export default {
   modules: ["@nuxtjs/pwa", "@nuxtjs/dotenv", "@nuxtjs/axios"],
 
   axios: {
-    baseURL: "http://localhost:5000/api/v1",
+    baseURL: process.env.BASE_URL || "http://localhost:5000/api/v1",
   },
 
   manifest: {

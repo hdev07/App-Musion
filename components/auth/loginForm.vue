@@ -10,7 +10,7 @@
           <v-text-field v-model="email" label="Email" outlined />
           <v-text-field v-model="password" label="Password" outlined />
         </div>
-        <div class="mx-8 my-2">
+        <div class="mx-8 my-24">
           <v-btn color="primary" block fill rounded @click="login()">
             Sign In
           </v-btn>

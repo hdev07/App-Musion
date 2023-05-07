@@ -16,7 +16,7 @@
             outlined
           />
         </div>
-        <div class="mx-8 my-2">
+        <div class="mx-8 my-4">
           <v-btn color="primary" block fill rounded @click="register()">
             Sign Up
           </v-btn>

@@ -32,7 +32,7 @@ export default {};
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #6f4c76;
+  background: #ffffff;
   animation: lds-grid 1.2s linear infinite;
 }
 .lds-grid div:nth-child(1) {

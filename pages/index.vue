@@ -17,6 +17,7 @@ import MsgDevice from "@/components/msgDevice.vue";
 
 export default {
   name: "IndexPage",
+  layout: "empty",
   components: {
     MsgDevice,
   },
@@ -32,7 +33,7 @@ export default {
       this.loading = false;
       if (this.$device.machine.type === "smartphone")
         this.$router.push("/walkthrough");
-    }, 5000);
+    }, 1000);
   },
   methods: {},
 };

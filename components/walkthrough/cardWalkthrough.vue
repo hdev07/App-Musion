@@ -1,14 +1,27 @@
 <template>
-  <div class="dark:bg-[#1A1A1A] h-screen">
+  <div class="h-screen">
     <div>
-      <img
-        :src="img"
-        alt="walkthrough"
+      <walkthrough_1
+        v-if="img === 1"
+        :currentColor="'#F3F4F6'"
+        :currentColorPrimary="'#F48FB1'"
+        class="m-auto w-full py-12 px-4 md:w-2/3 lg:w-1/3"
+      />
+      <walkthrough_2
+        v-if="img === 2"
+        :currentColor="'#F3F4F6'"
+        :currentColorPrimary="'#F48FB1'"
+        class="m-auto w-full py-12 px-4 md:w-2/3 lg:w-1/3"
+      />
+      <walkthrough_3
+        v-if="img === 3"
+        :currentColor="'#F3F4F6'"
+        :currentColorPrimary="'#F48FB1'"
         class="m-auto w-full py-12 px-4 md:w-2/3 lg:w-1/3"
       />
     </div>
     <div
-      class="absolute bottom-0 w-full h-72 rounded-t-[30px] shadow-md dark:bg-[#212120] dark:text-gray-100"
+      class="fixed bottom-0 w-full h-72 rounded-t-[30px] shadow-md bg-gray-100"
     >
       <div>
         <div class="mt-8">
@@ -24,13 +37,13 @@
         >
           <router-link to="/login" class="text-xs underline">Skip</router-link>
           <div class="w-1/3 justify-end">
-            <v-btn color="#F48FB1" block outlined rounded @click="nextStep()">
+            <v-btn color="primary" block outlined rounded @click="nextStep()">
               Next
             </v-btn>
           </div>
         </div>
         <div v-else class="flex justify-between m-8 py-4 items-center">
-          <v-btn color="#F48FB1" block fill rounded @click="createAcount()">
+          <v-btn color="primary" block fill rounded @click="createAcount()">
             create acount
           </v-btn>
         </div>
@@ -40,13 +53,17 @@
 </template>
 
 <script>
+import walkthrough_1 from "./walkthrough_1.vue";
+import walkthrough_2 from "./walkthrough_2.vue";
+import walkthrough_3 from "./walkthrough_3.vue";
 export default {
+  components: { walkthrough_1, walkthrough_2, walkthrough_3 },
   name: "card-walkthrough",
   data() {
     return {};
   },
   props: {
-    img: { type: String, Required: true },
+    img: { type: Number, Required: true },
     title: { type: String, Required: true },
     desc: { type: String, Required: true },
     step: { type: Number, Required: true },

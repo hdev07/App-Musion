@@ -65,8 +65,7 @@ export default {
           this.refreshToken();
         }
       } catch (error) {
-        console.error(error);
-        this.showErrorAlert("Error del servidor");
+        this.returnErrorAlert(error);
       }
     },
     async refreshToken() {

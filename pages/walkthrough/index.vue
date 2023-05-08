@@ -35,12 +35,12 @@ export default {
   layout: "empty",
   data() {
     return {
-      img1: "https://s3.amazonaws.com/musion.day/walkthrough_1.png",
-      img2: "https://s3.amazonaws.com/musion.day/walkthrough_2.png",
-      img3: "https://s3.amazonaws.com/musion.day/walkthrough_3.png",
+      img1: 1,
+      img2: 2,
+      img3: 3,
       title1: "Select the museums.",
       title2: "We will take care of the rest.",
-      title3: "You relax and enjoy your visits.",
+      title3: "Relax and enjoy your visits.",
       desc1: "Make sure to select the museums you want to visit.",
       desc2:
         "Thanks to the implementation of technology, we draw the best route to visit them all!",

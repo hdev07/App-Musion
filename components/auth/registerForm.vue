@@ -46,10 +46,10 @@ export default {
   data() {
     return {
       from: "register",
-      name: "",
-      email: "",
-      password: "",
-      rePassword: "",
+      name: "qwerty",
+      email: "hcruz0716@gmail.com",
+      password: "Qwertyu1234",
+      rePassword: "Qwertyu1234",
     };
   },
 
@@ -63,14 +63,12 @@ export default {
           repassword: this.rePassword,
         };
         const res = await this.$axios.post("/auth/register", body);
-        console.log(res);
         if (res.status === 201) {
           this.showSuccessAlert("Cuenta creada con exito");
           this.$router.push("/home");
         }
       } catch (error) {
-        console.error(error);
-        this.showErrorAlert("Error del servidor");
+        this.returnErrorAlert(error);
       }
     },
     async refreshToken() {
@@ -81,7 +79,6 @@ export default {
           this.expiresIn = res.data?.expires;
         }
       } catch (error) {
-        console.error(error);
         this.showErrorAlert("Error del servidor");
       }
     },

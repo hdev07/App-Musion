@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#FF4081] flex justify-center w-full h-screen">
+  <div class="bg-[#F48FB1] flex justify-center w-full h-screen">
     <div v-if="device !== 'smartphone'">
       <MsgDevice />
     </div>

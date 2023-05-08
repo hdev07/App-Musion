@@ -1,4 +1,6 @@
-require("dotenv").config();
+import brand from "./static/text/brand.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -11,15 +13,28 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#FF4081" },
-      {
-        hid: "description",
-        name: "description",
-        content: "Ven a descubrir todos los museos que tiene CDMX para ti",
-      },
+      { name: "description", content: brand.musion.desc },
+      { name: "msapplication-TileColor", content: "#FF4081" },
+      // Facebook
+      { property: "author", content: "musion" },
+      { property: "og:site_name", content: "musion.day" },
+      { property: "og:locale", content: "es_MX" },
+      { property: "og:type", content: "website" },
+      // Twitter
+      { property: "twitter:site", content: "musion.day" },
+      { property: "twitter:domain", content: "musion.day" },
+      { property: "twitter:creator", content: "musion" },
+      { property: "twitter:card", content: "summary" },
+      { property: "twitter:image:src", content: brand.musion.img },
+      { property: "og:url", content: brand.musion.url },
+      { property: "og:title", content: brand.musion.projectName },
+      { property: "og:description", content: brand.musion.desc },
+      { name: "twitter:site", content: brand.musion.url },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: brand.musion.img },
+      { property: "og:image", content: brand.musion.img },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
@@ -34,6 +49,7 @@ export default {
     "~/mixins/utilsMixins",
     "~/plugins/globalComponents",
     "~/plugins/vuesax",
+    "~/plugins/helpers",
     { src: "~/plugins/device.js", ssr: false },
     { src: "~/plugins/vee-validate.js", ssr: false },
     { src: "~/plugins/axios.js", ssr: false },
@@ -66,9 +82,10 @@ export default {
   modules: ["@nuxtjs/pwa", "@nuxtjs/dotenv", "@nuxtjs/axios"],
 
   axios: {
-    baseURL: process.env.BASE_URL || "http://localhost:5000/api/v1",
+    baseURL: process.env.BASE_URL,
   },
 
+  // PWA module configuration: https://go.nuxtjs.dev/pwa
   manifest: {
     name: "Musion",
     lang: "es",

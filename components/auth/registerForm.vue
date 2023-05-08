@@ -46,10 +46,10 @@ export default {
   data() {
     return {
       from: "register",
-      name: "qwerty",
-      email: "hcruz0716@gmail.com",
-      password: "Qwertyu1234",
-      rePassword: "Qwertyu1234",
+      name: "",
+      email: "",
+      password: "",
+      rePassword: "",
     };
   },
 

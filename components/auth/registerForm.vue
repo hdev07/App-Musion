@@ -1,34 +1,62 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen bg-background">
     <div class="">
       <p class="text-center text-3xl py-2 my-8">Register</p>
     </div>
-    <div class="fixed bottom-0 w-full min-h-[60%] rounded-t-[30px] bg-gray-100">
+    <div
+      class="fixed bottom-0 w-full min-h-[60%] rounded-t-[30px] bg-secondary"
+    >
       <div>
-        <SwitchForm :from="from" />
-        <div class="mx-4 py-2 text-center">
-          <v-text-field v-model="name" type="text" label="Name" outlined />
-          <v-text-field v-model="email" type="email" label="Email" outlined />
-          <v-text-field
-            v-model="password"
-            type="password"
-            label="Password"
-            outlined
-          />
-          <v-text-field
-            type="password"
-            v-model="rePassword"
-            label="Confirm Password"
-            outlined
-          />
-        </div>
-        <div class="mx-8 my-4">
-          <v-btn color="primary" block fill rounded @click="register()">
-            Sign Up
-          </v-btn>
-        </div>
-        <v-divider class="mx-2"> Or Sign Up with </v-divider>
-        <SocialForm />
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <SwitchForm :from="from" />
+          <div class="mx-4 py-2 text-center">
+            <v-text-field
+              v-model="name"
+              :rules="nameRules"
+              type="text"
+              label="Nombre"
+              outlined
+              required
+            />
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              type="email"
+              label="Correo"
+              required
+              outlined
+            />
+            <v-text-field
+              v-model="password"
+              :rules="passwordRules"
+              type="password"
+              label="Contraseña"
+              outlined
+            />
+            <v-text-field
+              v-model="rePassword"
+              :rules="rePasswordRules"
+              type="password"
+              label="Confirma contraseña"
+              outlined
+            />
+          </div>
+          <div class="mx-8 my-4">
+            <v-btn
+              :disabled="!valid"
+              color="primary"
+              class="mr-4"
+              block
+              fill
+              rounded
+              @click="validForm()"
+            >
+              Sign Up
+            </v-btn>
+          </div>
+          <v-divider class="mx-2"> Or Sign Up with </v-divider>
+          <SocialForm />
+        </v-form>
       </div>
     </div>
   </div>
@@ -37,6 +65,7 @@
 <script>
 import SwitchForm from "@/components/auth/switchForm";
 import SocialForm from "@/components/auth/socialForm.vue";
+
 export default {
   name: "register-form",
   components: {
@@ -46,14 +75,34 @@ export default {
   data() {
     return {
       from: "register",
+      valid: true,
       name: "",
+      nameRules: [(v) => !!v || "Nombre es requerido"],
       email: "",
+      emailRules: [
+        (v) => !!v || "E-mail is Requerido",
+        (v) => /.+@.+\..+/.test(v) || "E-mail no valido",
+      ],
       password: "",
+      passwordRules: [
+        (v) => !!v || "Contraseña es requerida",
+        (v) =>
+          /^.{8,}$/.test(v) || "La contraseña debe tener al menos 8 caracteres",
+      ],
       rePassword: "",
+      rePasswordRules: [
+        (v) => !!v || "Las contraseñas no coinciden",
+        (v) => v === this.password || "Las contraseñas no coinciden",
+      ],
     };
   },
 
   methods: {
+    async validForm() {
+      const valid = await this.$refs.form.validate();
+      if (valid) return this.register();
+    },
+
     async register() {
       try {
         const body = {
@@ -64,13 +113,16 @@ export default {
         };
         const res = await this.$axios.post("/auth/register", body);
         if (res.status === 201) {
-          this.showSuccessAlert("Cuenta creada con exito");
+          this.showSuccessAlert("Cuenta creada con exito", 2000);
           this.$router.push("/home");
         }
       } catch (error) {
         this.returnErrorAlert(error);
+      } finally {
+        this.resetForm();
       }
     },
+
     async refreshToken() {
       try {
         const res = await this.$axios.get("/auth/refresh");
@@ -81,6 +133,10 @@ export default {
       } catch (error) {
         this.showErrorAlert("Error del servidor");
       }
+    },
+
+    resetForm() {
+      this.$refs.form.reset();
     },
   },
 };

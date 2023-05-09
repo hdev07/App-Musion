@@ -2,38 +2,38 @@ import Vue from "vue";
 
 Vue.mixin({
   methods: {
-    showSuccessAlert(message) {
+    showSuccessAlert(message, duration = 3000) {
       this.$vs.notification({
         title: "Success",
         color: "success",
         text: message,
         flat: true,
         position: "top-right",
-        duration: 4000,
+        duration: duration,
         progress: "auto",
       });
     },
 
-    showErrorAlert(message) {
+    showErrorAlert(message, duration = 3000) {
       this.$vs.notification({
         title: "Error",
         color: "danger",
         text: message,
         flat: true,
         position: "top-right",
-        duration: 4000,
+        duration: duration,
         progress: "auto",
       });
     },
 
-    showWarningAlert(message) {
+    showWarningAlert(message, duration = 3000) {
       this.$vs.notification({
         title: "Hold on!",
         color: "warning",
         text: message,
         flat: true,
         position: "top-right",
-        duration: 4000,
+        duration: duration,
         progress: "auto",
       });
     },

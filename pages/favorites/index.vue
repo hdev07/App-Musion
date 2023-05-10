@@ -1,6 +1,9 @@
 <template>
   <div>
     <Search />
+    <Card />
+    <div class="relative h-44" />
+    <Pagination />
     <Navbar :activeTab="activeTab" @update:activeTab="updateActiveTab" />
   </div>
 </template>
@@ -8,10 +11,12 @@
 <script>
 import Navbar from "@/components/common/navbar.vue";
 import Search from "@/components/common/search.vue";
+import Card from "@/components/common/card.vue";
+import Pagination from "@/components/common/pagination.vue";
 export default {
   name: "Favorites",
   layout: "empty",
-  components: { Navbar, Search },
+  components: { Navbar, Search, Card, Pagination },
   data() {
     return {
       activeTab: "fav",

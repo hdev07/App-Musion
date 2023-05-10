@@ -1,7 +1,6 @@
 <template>
   <div>
     <Search :showTune="true" />
-    <h1 class="text-center underline">Hola estas en el Home</h1>
     <Navbar :activeTab="activeTab" @update:activeTab="updateActiveTab" />
   </div>
 </template>

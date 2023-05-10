@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute bottom-0 w-full bg-[#1A1A1A] pb-3 mt-3">
+  <div class="fixed bottom-0 w-full bg-[#1A1A1A] pb-3 mt-3 z-50">
     <div class="flex justify-around items-center">
       <nuxt-link class="no-styles" to="/home">
         <div

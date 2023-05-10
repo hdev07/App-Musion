@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center underline">Hola estas en el Home</h1>
+    <h1 class="text-center underline">Hola estas en lista</h1>
     <Navbar :activeTab="activeTab" @update:activeTab="updateActiveTab" />
   </div>
 </template>
@@ -8,12 +8,12 @@
 <script>
 import Navbar from "@/components/common/navbar.vue";
 export default {
-  name: "Home",
+  name: "List",
   layout: "empty",
   components: { Navbar },
   data() {
     return {
-      activeTab: "home", // Valor inicial de activeTab en el componente padre
+      activeTab: "list", // Valor inicial de activeTab en el componente padre
     };
   },
   methods: {

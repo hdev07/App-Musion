@@ -1,27 +1,27 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen bg-background">
     <div>
       <walkthrough_1
         v-if="img === 1"
-        :currentColor="'#F3F4F6'"
-        :currentColorPrimary="'#F48FB1'"
+        :currentColor="'#212121'"
+        :currentColorPrimary="'#FF4081'"
         class="m-auto w-full py-12 px-4 md:w-2/3 lg:w-1/3"
       />
       <walkthrough_2
         v-if="img === 2"
-        :currentColor="'#F3F4F6'"
-        :currentColorPrimary="'#F48FB1'"
+        :currentColor="'#212121'"
+        :currentColorPrimary="'#FF4081'"
         class="m-auto w-full py-12 px-4 md:w-2/3 lg:w-1/3"
       />
       <walkthrough_3
         v-if="img === 3"
-        :currentColor="'#F3F4F6'"
-        :currentColorPrimary="'#F48FB1'"
+        :currentColor="'#212121'"
+        :currentColorPrimary="'#FF4081'"
         class="m-auto w-full py-12 px-4 md:w-2/3 lg:w-1/3"
       />
     </div>
     <div
-      class="fixed bottom-0 w-full h-72 rounded-t-[30px] shadow-md bg-gray-100"
+      class="fixed bottom-0 w-full h-72 rounded-t-[30px] shadow-md bg-secondary"
     >
       <div>
         <div class="mt-8">

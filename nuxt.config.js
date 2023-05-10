@@ -106,6 +106,7 @@ export default {
         },
       },
     },
+    transpile: [/^vue2-google-maps($|\/)/],
   },
   env: {
     AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,

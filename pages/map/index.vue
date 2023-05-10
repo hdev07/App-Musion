@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Search />
+    <!-- <Search /> -->
+    <MuseumsMap />
     <h1 class="text-center underline">Hola estas en el Mapa</h1>
     <Navbar :activeTab="activeTab" @update:activeTab="updateActiveTab" />
   </div>
@@ -9,10 +10,11 @@
 <script>
 import Navbar from "@/components/common/navbar.vue";
 import Search from "@/components/common/search.vue";
+import MuseumsMap from "@/components/map/chargers/museumsMap.vue";
 export default {
   name: "Map",
   layout: "empty",
-  components: { Navbar, Search },
+  components: { Navbar, Search, MuseumsMap },
   data() {
     return {
       activeTab: "map",

@@ -27,19 +27,17 @@
             />
           </div>
           <div class="mx-8 my-2">
-            <div class="mx-8 my-4">
-              <v-btn
-                :disabled="!valid"
-                color="primary"
-                class="mr-4"
-                block
-                fill
-                rounded
-                @click="validForm()"
-              >
-                Sign Up
-              </v-btn>
-            </div>
+            <v-btn
+              :disabled="!valid"
+              color="primary"
+              class="mr-4"
+              block
+              fill
+              rounded
+              @click="validForm()"
+            >
+              Sign In
+            </v-btn>
           </div>
           <div class="flex justify-center">
             <p class="text-sm">Forgotton your pasword?</p>

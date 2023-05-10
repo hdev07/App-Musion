@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Search />
     <h1 class="text-center underline">Hola estas en el Mapa</h1>
     <Navbar :activeTab="activeTab" @update:activeTab="updateActiveTab" />
   </div>
@@ -7,18 +8,19 @@
 
 <script>
 import Navbar from "@/components/common/navbar.vue";
+import Search from "@/components/common/search.vue";
 export default {
   name: "Map",
   layout: "empty",
-  components: { Navbar },
+  components: { Navbar, Search },
   data() {
     return {
-      activeTab: "map", // Valor inicial de activeTab en el componente padre
+      activeTab: "map",
     };
   },
   methods: {
     updateActiveTab(tab) {
-      this.activeTab = tab; // Actualizar el valor de activeTab en el componente padre
+      this.activeTab = tab;
     },
   },
 };

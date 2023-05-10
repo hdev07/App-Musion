@@ -4,7 +4,7 @@ Vue.mixin({
   methods: {
     showSuccessAlert(message, duration = 3000) {
       this.$vs.notification({
-        title: "Success",
+        title: "Éxito",
         color: "success",
         text: message,
         flat: true,
@@ -28,7 +28,7 @@ Vue.mixin({
 
     showWarningAlert(message, duration = 3000) {
       this.$vs.notification({
-        title: "Hold on!",
+        title: "Espera",
         color: "warning",
         text: message,
         flat: true,

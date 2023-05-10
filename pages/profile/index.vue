@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1 class="text-center underline">Hola estas en el perfil</h1>
     <Navbar :activeTab="activeTab" @update:activeTab="updateActiveTab" />
   </div>
 </template>
@@ -13,12 +12,12 @@ export default {
   components: { Navbar },
   data() {
     return {
-      activeTab: "profile", // Valor inicial de activeTab en el componente padre
+      activeTab: "profile",
     };
   },
   methods: {
     updateActiveTab(tab) {
-      this.activeTab = tab; // Actualizar el valor de activeTab en el componente padre
+      this.activeTab = tab;
     },
   },
 };

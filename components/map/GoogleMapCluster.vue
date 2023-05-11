@@ -4,6 +4,7 @@
 
 <script>
 import MarkerClusterer from "@google/markerclusterer";
+import logoMarker from "../../assets/icons/marker.png";
 
 export default {
   props: {
@@ -46,7 +47,7 @@ export default {
           position: marker.position,
           marker: marker,
           map: this.map,
-          icon: "@/assets/images/icons/marker.png",
+          icon: logoMarker,
         });
 
         markerMap.addListener("click", () => this.$emit("click", markerMap));
@@ -55,7 +56,10 @@ export default {
       });
 
       this.cluster = new MarkerClusterer(this.map, this.mrks, {
-        imagePath: "https://edrivemx.s3.us-west-2.amazonaws.com/map/blue",
+        gridSize: 20,
+        maxZoom: 24,
+        imagePath:
+          "https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m",
       });
 
       this.$emit("mapMarkers", this.mrks);

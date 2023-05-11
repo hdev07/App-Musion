@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       mapMarkers: [],
-      mapCenter: { lat: 23.9843859, lng: -103.9607737 },
+      mapCenter: { lat: 19.4324881, lng: -99.1425509 },
       infoWinOpen: false,
       infoWindowPos: {},
       currentMidx: null,
@@ -70,8 +70,9 @@ export default {
     mapConfig() {
       return {
         center: this.mapCenter,
-        zoom: 4.4,
+        zoom: 17,
         disableDefaultUI: true,
+        mapId: "58ef9cdd676f8266",
         // zoomControl: false,
         // mapTypeControl: false,
         // scaleControl: false,
@@ -89,7 +90,7 @@ export default {
       if (newVal == null) return;
 
       const mapMarker = this.mapMarkers.find(
-        (marker) => marker.marker.idChargeStation === newVal.idChargeStation
+        (marker) => marker.marker.museumId === newVal.museumId
       );
 
       if (mapMarker == null) return;
@@ -108,12 +109,11 @@ export default {
   methods: {
     mapCentorToFirstMarker() {
       if (this.markers && this.markers.length > 0) {
-        this.mapCenter = this.markers[0].position;
+        this.mapCenter = this.markers[103].position;
       }
     },
     handleClickMarker(marker, index) {
       this.infoOptions.marker = marker;
-      this.infoOptions.infoText = marker.infoText;
       this.infoWindowPos = marker.position;
       this.infoWinContent = marker.infoText;
 

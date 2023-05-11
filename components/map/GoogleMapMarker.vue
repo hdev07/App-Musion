@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import logoMarker from "../../assets/icons/marker.png";
 export default {
   props: {
     google: {
@@ -31,7 +30,7 @@ export default {
       position: this.marker.position,
       marker: this.marker,
       map: this.map,
-      icon: logoMarker,
+      icon: "https://s3.amazonaws.com/musion.day/marker.png",
     });
 
     this.mapMarker.addListener("click", () =>

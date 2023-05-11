@@ -75,7 +75,7 @@ export default {
           </div>
           <div class="w-full text-end m-1">
             <a
-              href="https://www.google.com/maps/search/?api=1&query=${museum.lat},${museum.lng}"
+              href="https://www.google.com/maps/search/?api=1&query=${museum?.coordinates?.lat},${museum?.coordinates?.lng}"
               target="_blank"
               rel="noopener noreferrer"
               class="underline"

@@ -1,69 +1,38 @@
-# App-Musion
+# Musion - Explora la cultura sin límites
+## Visión
+En Musion, nuestra visión es convertirnos en la plataforma líder en la exploración de museos y la promoción de la cultura en todo el mundo.
 
-## Build Setup
+## Misión
+Nuestra misión es inspirar a las personas a través de la cultura y la historia, brindándoles experiencias únicas y significativas que les permitan conectarse con el mundo de una manera más profunda.
 
-```bash
-# install dependencies
-$ npm install
+## Valores
+- Pasión por la cultura y la historia
+- Innovación y tecnología
+- Compromiso con la educación y el aprendizaje
+- Diversidad e inclusión
+- Responsabilidad social y ambiental
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+# Características principales
+- Explora todos los museos de la Ciudad de México en un mapa interactivo
+- Planifica tus visitas a museos para aprovechar al máximo tu tiempo
+- Descubre nuevas exposiciones, programas educativos y eventos especiales
+- Aprende más sobre la historia y la cultura de la Ciudad de México
+- Interfaz de usuario intuitiva y fácil de usar
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+# Funciones principales
+## Mapa interactivo
+ Con Musion, puedes explorar todos los museos de la Ciudad de México en un mapa interactivo fácil de usar. Encuentra los museos más cercanos a tu ubicación actual y descubre nuevos lugares para visitar.
 
-# generate static project
-$ npm run generate
-```
+## Planificador de visitas
+Planifica tus visitas a los museos con Musion para aprovechar al máximo tu tiempo. Verifica los horarios y las exposiciones actuales para planificar tu visita perfecta.
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+## Descubrimiento de exposiciones
+Descubre nuevas exposiciones, programas educativos y eventos especiales con Musion. Mantente al día con las últimas noticias y eventos de tus museos favoritos.
 
-## Special Directories
+## Aprendizaje y educación
+Aprende más sobre la historia y la cultura de la Ciudad de México con Musion. Descubre la información detallada sobre los museos y las exposiciones, y aprende sobre los eventos y actividades educativas disponibles.
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+## Interfaz de usuario intuitiva
+La interfaz de usuario de Musion es fácil de usar e intuitiva. Navega por la aplicación sin problemas y encuentra todo lo que necesitas con rapidez y facilidad.
 
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+### ¡Prueba Musion, pronto estará disponible y podras comenzar a  explorar la cultura sin límites!

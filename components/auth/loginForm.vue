@@ -67,13 +67,11 @@ export default {
       valid: true,
       email: "",
       emailRules: [
-        (v) => !!v || "E-mail is Requerido",
-        (v) => /.+@.+\..+/.test(v) || "E-mail no valido",
+        (v) => !!v || "Correo es requerido",
+        (v) => /.+@.+\..+/.test(v) || "Correo no valido",
       ],
       password: "",
       passwordRules: [(v) => !!v || "Contraseña es requerida"],
-      token: "",
-      expiresIn: "",
     };
   },
   methods: {
@@ -89,30 +87,15 @@ export default {
           password: this.password,
         };
 
-        const res = await this.$axios.post("/auth/login", body);
-        if (res.status === 200) {
-          this.showSuccessAlert("Usuario logueado con exito", 2000);
-          this.token = res.data?.token;
-          this.expiresIn = res.data?.expires;
-          this.refreshToken();
-        }
+        // Dispatch the login action in Vuex store
+        await this.$store.dispatch("auth/login", body);
+
+        // Redirect to home page after successful login
+        this.$router.push("/home");
       } catch (error) {
         this.returnErrorAlert(error);
       } finally {
         this.resetForm();
-      }
-    },
-
-    async refreshToken() {
-      try {
-        const res = await this.$axios.get("/auth/refresh");
-        if (res.status === 200) {
-          this.token = res.data?.token;
-          this.expiresIn = res.data?.expires;
-          this.$router.push("/home");
-        }
-      } catch (error) {
-        this.showErrorAlert("Error del servidor");
       }
     },
 

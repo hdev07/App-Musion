@@ -80,8 +80,8 @@ export default {
       nameRules: [(v) => !!v || "Nombre es requerido"],
       email: "",
       emailRules: [
-        (v) => !!v || "E-mail is Requerido",
-        (v) => /.+@.+\..+/.test(v) || "E-mail no valido",
+        (v) => !!v || "Correo es requerido",
+        (v) => /.+@.+\..+/.test(v) || "Correo no valido",
       ],
       password: "",
       passwordRules: [

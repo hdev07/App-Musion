@@ -65,6 +65,12 @@ export default {
     "@nuxtjs/tailwindcss",
   ],
 
+  store: {
+    modules: [
+      "~/store/auth.js", // Ruta al archivo de tu módulo Vuex
+    ],
+  },
+
   vuetify: {
     theme: {
       dark: true,
@@ -83,10 +89,19 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/pwa", "@nuxtjs/dotenv", "@nuxtjs/axios"],
+  modules: [
+    "@nuxtjs/pwa",
+    "@nuxtjs/dotenv",
+    "@nuxtjs/axios",
+    "cookie-universal-nuxt",
+  ],
 
   axios: {
     baseURL: process.env.BASE_URL,
+  },
+
+  router: {
+    middleware: ["auth"],
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

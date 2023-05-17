@@ -3,9 +3,11 @@
     <Search @search="handleSearch" />
     <div v-for="(card, i) in museums" :data="card" :key="i">
       <Card
+        :id="museums[i]?._id"
         :title="museums[i]?.name"
         :description="museums[i]?.description"
         :location="returLocationString(museums[i].address)"
+        @update-data="retrieveData"
       />
     </div>
     <div class="relative h-44" />
@@ -30,7 +32,7 @@ export default {
   components: { Navbar, Search, Card, Pagination },
   data() {
     return {
-      activeTab: "list",
+      activeTab: "fav",
       museums: [],
       perPage: 1,
       currentPage: 1,
@@ -42,7 +44,7 @@ export default {
     try {
       const queryParams = this.paramsToString(this.$route.query);
       const { data } = await this.$axios.get(`/favorites?${queryParams}`);
-      const { perPage, currentPage, lastPage, data: favorites } = data;
+      const { perPage, currentPage, lastPage } = data;
       this.museums = data.favorites;
       this.perPage = perPage;
       this.currentPage = currentPage;
@@ -69,6 +71,10 @@ export default {
     handleChangePage(page) {
       const query = this.$route.query;
       this.$router.push({ query: { ...query, page } });
+    },
+
+    retrieveData() {
+      this.$fetch();
     },
 
     returLocationString(address) {

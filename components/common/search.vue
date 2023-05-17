@@ -20,10 +20,19 @@ export default {
   data() {
     return {
       searchText: "",
+      searchClearTimeout: undefined,
     };
   },
   props: {
     showTune: { type: Boolean, default: false },
+  },
+  watch: {
+    searchText(newVal, oldVal) {
+      if (this.searchClearTimeout) clearTimeout(this.searchClearTimeout);
+      this.searchClearTimeout = setTimeout(() => {
+        this.$emit("search", newVal);
+      }, 500);
+    },
   },
   methods: {
     iconClick() {

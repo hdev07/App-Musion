@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Search />
+    <Search @search="handleSearch" />
     <div v-for="(card, i) in museums" :data="card" :key="i">
       <Card
         :title="museums[i]?.name"

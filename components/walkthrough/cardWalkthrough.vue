@@ -25,15 +25,26 @@
     >
       <div>
         <div class="mt-8">
-          <p class="text-center text-xl py-2">{{ title }}</p>
-          <p class="text-center text-md py-1 mx-8">{{ desc }}</p>
+          <p class="text-center text-xl py-2 mb-1">{{ title }}</p>
+          <p class="text-center text-md py-1 my-0 mx-8">{{ desc }}</p>
         </div>
-        <div class="my-4 text-center">
-          {{ step }}
+        <div class="my-2 flex justify-evenly mx-40">
+          <div
+            :class="{ activeStep: step === 1 }"
+            class="rounded-full w-2 h-2 my-2 bg-white"
+          />
+          <div
+            :class="{ activeStep: step === 2 }"
+            class="rounded-full w-2 h-2 my-2 bg-white"
+          />
+          <div
+            :class="{ activeStep: step === 3 }"
+            class="rounded-full w-2 h-2 my-2 bg-white"
+          />
         </div>
         <div
           v-if="step === 1 || step === 2"
-          class="flex justify-between m-8 py-4 items-center"
+          class="flex justify-between m-8 items-center"
         >
           <router-link to="/login" class="text-xs underline">Skip</router-link>
           <div class="w-1/3 justify-end">
@@ -82,4 +93,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.activeStep {
+  background: #ff4081;
+  color: #ff4081;
+}
+</style>

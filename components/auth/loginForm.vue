@@ -86,12 +86,7 @@ export default {
           email: this.email,
           password: this.password,
         };
-
-        // Dispatch the login action in Vuex store
         await this.$store.dispatch("auth/login", body);
-
-        // Redirect to home page after successful login
-        this.$router.push("/home");
       } catch (error) {
         this.returnErrorAlert(error);
       } finally {

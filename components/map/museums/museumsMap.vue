@@ -3,7 +3,7 @@
     <google-map-loader
       :map-config="mapConfig"
       :api-key="apiKey"
-      :center="mapCenter"
+      :center="center"
       info-window
     >
       <template slot-scope="{ google, map }">
@@ -44,12 +44,12 @@ export default {
   },
   props: {
     markers: { type: Array, required: true },
-    viewChargerMap: { type: Object, default: () => ({}) },
+    viewMuseumMap: { type: Object, default: () => ({}) },
   },
   data() {
     return {
       mapMarkers: [],
-      mapCenter: { lat: 19.4324881, lng: -99.1425509 },
+      center: { lat: 19.4324881, lng: -99.1425509 },
       infoWinOpen: false,
       infoWindowPos: {},
       currentMidx: null,
@@ -65,28 +65,19 @@ export default {
   },
   computed: {
     apiKey() {
-      return process.env.GOOGLE_MAP_API || "";
+      return process.env.GOOGLE_MAP_API || "API_KEY";
     },
     mapConfig() {
       return {
-        center: this.mapCenter,
-        zoom: 17,
+        center: this.center,
+        zoom: 16,
         disableDefaultUI: true,
         mapId: "58ef9cdd676f8266",
-        // zoomControl: false,
-        // mapTypeControl: false,
-        // scaleControl: false,
-        // streetViewControl: false,
-        // rotateControl: false,
-        // fullscreenControl: false
       };
     },
   },
   watch: {
-    markers(newVal, oldVal) {
-      this.mapCentorToFirstMarker();
-    },
-    viewChargerMap(newVal, oldVal) {
+    viewMuseumMap(newVal, oldVal) {
       if (newVal == null) return;
 
       const mapMarker = this.mapMarkers.find(
@@ -103,13 +94,24 @@ export default {
       this.handleClickMarker(mapMarker);
     },
   },
+
   mounted() {
-    this.mapCentorToFirstMarker();
+    this.getUserLocation();
   },
+
   methods: {
-    mapCentorToFirstMarker() {
-      if (this.markers && this.markers.length > 0) {
-        this.mapCenter = this.markers[103].position;
+    getUserLocation() {
+      try {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            this.center = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+          });
+        }
+      } catch (e) {
+        console.log("error :>> ", error);
       }
     },
     handleClickMarker(marker, index) {
@@ -126,7 +128,6 @@ export default {
     },
     handleCreatedMapMarkers(mapMarkers) {
       this.mapMarkers = [];
-      // this.mapMarkers = mapMarkers
     },
   },
 };

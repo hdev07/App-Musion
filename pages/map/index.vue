@@ -58,7 +58,7 @@ export default {
     },
     setInfoWindoContentByMuseum(museum) {
       return `
-      <div class="w-full flex flex-wrap p-2">
+      <div class="w-full flex flex-wrap">
         <div class="w-full flex border-b border-primary mb-4 pb-1">
           <div class="w-2/3 flex items-center">
             <p class="truncate text-lg font-semibold text-center text-gray-900 mb-1">

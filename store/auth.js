@@ -20,7 +20,7 @@ export const actions = {
         this.$router.push("/home");
       }
     } catch (error) {
-      console.error(error);
+      this.returnErrorAlert(error);
     }
   },
 
@@ -38,7 +38,7 @@ export const actions = {
         }
       }
     } catch (error) {
-      console.error(error);
+      this.returnErrorAlert(error);
     }
   },
 };

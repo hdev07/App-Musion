@@ -41,7 +41,11 @@
           </div>
           <div class="flex justify-center">
             <p class="text-sm">Forgotton your pasword?</p>
-            <a href="#" class="text-sm underline pl-1">Reset password</a>
+            <a
+              href="https://app.musion.day/reset-password"
+              class="text-sm underline pl-1"
+              >Reset password</a
+            >
           </div>
           <v-divider class="mx-2"> Or Sign Up with </v-divider>
           <SocialForm class="mt-8" />

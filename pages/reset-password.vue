@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <ResetPassword />
-  </div>
+  <ResetPassword />
 </template>
 <script>
 import ResetPassword from "../components/auth/resetPassword.vue";

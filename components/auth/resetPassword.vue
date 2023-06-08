@@ -11,14 +11,13 @@
           contraseña.
         </p>
         <div>
-          <v-form ref="form" v-model="valid" lazy-validation>
+          <v-form ref="form" v-model="valid">
             <div class="mx-4 py-2 text-center">
               <v-text-field
                 v-model="email"
                 :rules="emailRules"
                 type="email"
                 label="Correo"
-                required
                 outlined
               />
             </div>
@@ -53,7 +52,7 @@
         v-if="!sendNewPassword"
         class="rounded-lg bg-secondary py-6 px-4 m-4"
       >
-        <p class="text-center py-2 mx-2"></p>
+        <p class="text-center py-2 mx-2">Ingresa una nueva contraseña.</p>
         <div>
           <v-form ref="form" v-model="valid" lazy-validation>
             <div class="mx-4 py-2 text-center">
@@ -88,8 +87,20 @@
           </v-form>
         </div>
       </div>
-      <div v-if="sendLink" class="rounded-lg bg-secondary py-6 px-4 m-4">
-        <p class="text-center py-2 mx-2">Ve a iniciar sesion.</p>
+      <div v-if="sendNewPassword" class="rounded-lg bg-secondary py-6 px-4 m-4">
+        <div class="mx-8 my-2">
+          <v-btn
+            :disabled="!valid"
+            color="primary"
+            class="mr-4"
+            block
+            fill
+            rounded
+            @click="this.$router.push('/login')"
+          >
+            Iniciar sesión
+          </v-btn>
+        </div>
       </div>
     </div>
   </div>

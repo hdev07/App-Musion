@@ -20,10 +20,14 @@
             />
             <v-text-field
               v-model="password"
+              :append-icon="
+                showPass ? 'mdi-eye-outline' : 'mdi-eye-off-outline'
+              "
+              :type="showPass ? 'text' : 'password'"
               :rules="passwordRules"
-              type="password"
               label="Contraseña"
               outlined
+              @click:append="showPass = !showPass"
             />
           </div>
           <div class="mx-8 my-2">
@@ -69,6 +73,7 @@ export default {
     return {
       from: "login",
       valid: true,
+      showPass: false,
       email: "",
       emailRules: [
         (v) => !!v || "Correo es requerido",

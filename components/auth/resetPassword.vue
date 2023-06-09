@@ -88,6 +88,7 @@
         </div>
       </div>
       <div v-if="sendNewPassword" class="rounded-lg bg-secondary py-6 px-4 m-4">
+        <p class="text-center py-2 mx-2">Redirijete a iniciar sesión</p>
         <div class="mx-8 my-2">
           <v-btn
             :disabled="!valid"
@@ -96,7 +97,7 @@
             block
             fill
             rounded
-            @click="this.$router.push('/login')"
+            @click="redirectToLogin"
           >
             Iniciar sesión
           </v-btn>
@@ -181,6 +182,10 @@ export default {
 
     resetForm() {
       this.$refs.form.reset();
+    },
+
+    redirectToLogin() {
+      this.$router.push("/login");
     },
   },
 };

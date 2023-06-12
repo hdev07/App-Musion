@@ -1,6 +1,22 @@
 <template>
   <div>
     <Search @search="handleSearch" />
+    <div class="flex mx-3 mb-3 gap-2 overflow-x-auto">
+      <div
+        v-for="(chip, i) in categories"
+        :data="chip"
+        :key="i"
+        @click="selectCategory(chip.category)"
+      >
+        <v-chip
+          :class="{ primary: selectedCategories.includes(chip.category) }"
+        >
+          {{
+            categories[i]?.category ? categories[i]?.category : "Sin categoría"
+          }}
+        </v-chip>
+      </div>
+    </div>
     <div v-for="(card, i) in museums" :data="card" :key="i">
       <Card
         :id="museums[i]?._id"
@@ -35,9 +51,11 @@ export default {
     return {
       activeTab: "list",
       museums: [],
+      categories: [],
       perPage: 1,
       currentPage: 1,
       lastPage: 1,
+      selectedCategories: [],
     };
   },
 
@@ -50,9 +68,14 @@ export default {
       this.perPage = perPage;
       this.currentPage = currentPage;
       this.lastPage = lastPage;
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
+      this.returnErrorAlert(error);
     }
+  },
+
+  mounted() {
+    this.getCategories();
   },
 
   watch: {
@@ -62,6 +85,11 @@ export default {
   methods: {
     updateActiveTab(tab) {
       this.activeTab = tab;
+    },
+
+    async getCategories() {
+      const { data } = await this.$axios.get("/museums/categories");
+      this.categories = data.categories;
     },
 
     handleSearch(search) {
@@ -90,6 +118,33 @@ export default {
         " " +
         address?.city;
       return addrss;
+    },
+
+    async selectCategory(category) {
+      const index = this.selectedCategories.indexOf(category);
+
+      if (index > -1) {
+        this.selectedCategories.splice(index, 1);
+      } else {
+        this.selectedCategories.push(category);
+      }
+
+      let query = {
+        ...this.$route.query,
+        categories: this.selectedCategories.filter((cat) => cat !== ""),
+      };
+
+      if (this.selectedCategories.includes("")) {
+        query.categories = query.categories.filter((cat) => cat !== "");
+        query.categories.push("Sin categoría");
+      }
+
+      if (query.categories.length === 0) {
+        delete query.categories;
+      }
+
+      this.$router.push({ query });
+      console.log(this.selectedCategories);
     },
   },
 };

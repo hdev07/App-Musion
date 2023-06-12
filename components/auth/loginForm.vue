@@ -13,6 +13,7 @@
             <v-text-field
               v-model="email"
               :rules="emailRules"
+              :loading="loading"
               type="email"
               label="Correo"
               required
@@ -25,6 +26,7 @@
               "
               :type="showPass ? 'text' : 'password'"
               :rules="passwordRules"
+              :loading="loading"
               label="Contraseña"
               outlined
               @click:append="showPass = !showPass"
@@ -32,7 +34,8 @@
           </div>
           <div class="mx-8 my-2">
             <v-btn
-              :disabled="!valid"
+              :disabled="!valid || loading"
+              :loading="loading"
               color="primary"
               class="mr-4"
               block
@@ -73,6 +76,7 @@ export default {
     return {
       from: "login",
       valid: true,
+      loading: false,
       showPass: false,
       email: "",
       emailRules: [
@@ -91,6 +95,7 @@ export default {
 
     async login() {
       try {
+        this.loading = true;
         const body = {
           email: this.email,
           password: this.password,
@@ -100,6 +105,7 @@ export default {
         console.error(error);
       } finally {
         this.resetForm();
+        this.loading = false;
       }
     },
 

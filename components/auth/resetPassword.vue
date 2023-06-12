@@ -16,6 +16,7 @@
               <v-text-field
                 v-model="email"
                 :rules="emailRules"
+                :loading="loading"
                 type="email"
                 label="Correo"
                 outlined
@@ -23,7 +24,8 @@
             </div>
             <div class="mx-8 my-2">
               <v-btn
-                :disabled="!valid"
+                :disabled="!valid || loading"
+                :loading="loading"
                 color="primary"
                 class="mr-4"
                 block
@@ -59,6 +61,7 @@
               <v-text-field
                 v-model="password"
                 :rules="passwordRules"
+                :loading="loading"
                 type="password"
                 label="Contraseña"
                 outlined
@@ -66,6 +69,7 @@
               <v-text-field
                 v-model="rePassword"
                 :rules="rePasswordRules"
+                :loading="loading"
                 type="password"
                 label="Confirma contraseña"
                 outlined
@@ -73,7 +77,8 @@
             </div>
             <div class="mx-8 my-2">
               <v-btn
-                :disabled="!valid"
+                :disabled="!valid || loading"
+                :loading="loading"
                 color="primary"
                 class="mr-4"
                 block
@@ -91,7 +96,6 @@
         <p class="text-center py-2 mx-2">Redirijete a iniciar sesión</p>
         <div class="mx-8 my-2">
           <v-btn
-            :disabled="!valid"
             color="primary"
             class="mr-4"
             block
@@ -115,6 +119,7 @@ export default {
       tokenParams: "",
       sendLink: false,
       sendNewPassword: false,
+      loading: false,
       valid: true,
       email: "",
       emailRules: [
@@ -148,6 +153,7 @@ export default {
     },
     async requestResetPasssword() {
       try {
+        this.loading = true;
         const body = {
           email: this.email,
         };
@@ -161,11 +167,13 @@ export default {
         this.returnErrorAlert(error);
       } finally {
         this.resetForm();
+        this.loading = false;
       }
     },
 
     async resetPasssword() {
       try {
+        this.loading = true;
         const body = {
           token: this.tokenParams,
           password: this.password,
@@ -177,6 +185,7 @@ export default {
         this.returnErrorAlert(error);
       } finally {
         this.resetForm();
+        this.loading = false;
       }
     },
 

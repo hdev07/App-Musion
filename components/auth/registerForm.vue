@@ -13,6 +13,7 @@
             <v-text-field
               v-model="name"
               :rules="nameRules"
+              :loading="loading"
               type="text"
               label="Nombre"
               outlined
@@ -21,6 +22,7 @@
             <v-text-field
               v-model="email"
               :rules="emailRules"
+              :loading="loading"
               type="email"
               label="Correo"
               required
@@ -29,6 +31,7 @@
             <v-text-field
               v-model="password"
               :rules="passwordRules"
+              :loading="loading"
               type="password"
               label="Contraseña"
               outlined
@@ -36,6 +39,7 @@
             <v-text-field
               v-model="rePassword"
               :rules="rePasswordRules"
+              :loading="loading"
               type="password"
               label="Confirma contraseña"
               outlined
@@ -76,6 +80,7 @@ export default {
     return {
       from: "register",
       valid: true,
+      loading: false,
       name: "",
       nameRules: [(v) => !!v || "Nombre es requerido"],
       email: "",
@@ -105,6 +110,7 @@ export default {
 
     async register() {
       try {
+        this.loading = true;
         const body = {
           name: this.name,
           email: this.email,
@@ -116,6 +122,7 @@ export default {
         console.error(error);
       } finally {
         this.resetForm();
+        this.loading = false;
       }
     },
 

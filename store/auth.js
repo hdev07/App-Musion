@@ -1,3 +1,4 @@
+import Vue from "vue";
 const state = () => ({
   token: null,
   expiresIn: null,
@@ -15,12 +16,13 @@ export const actions = {
       if (res.status === 200) {
         commit("setToken", res.data?.token);
         commit("setExpiresIn", res.data?.expiresIn);
-
+        Vue.prototype.$displaySuccessAlert("Inicio de sesión exitoso");
         dispatch("refreshToken");
         this.$router.push("/home");
       }
     } catch (error) {
-      this.returnErrorAlert(error);
+      const e = error.response?.data?.msg;
+      Vue.prototype.$displayErrorAlert(e);
     }
   },
 
@@ -38,7 +40,9 @@ export const actions = {
         }
       }
     } catch (error) {
-      this.returnErrorAlert(error);
+      const e = error.response?.data?.msg;
+
+      Vue.prototype.$displayErrorAlert(e);
     }
   },
 };

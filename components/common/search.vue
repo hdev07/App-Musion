@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     iconClick() {
-      this.showWarningAlert("Diste click en filtros");
+      this.$displayWarningAlert("Diste click en filtros");
       console.log("hola me dio click");
     },
   },

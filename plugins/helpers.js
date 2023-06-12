@@ -13,14 +13,14 @@ Vue.prototype.paramsToString = (query = {}) => {
 };
 
 Vue.prototype.returnErrorAlert = function (error) {
-  if (!error.response?.data?.errors) {
-    let err = error.response?.data?.msg;
-    this.showErrorAlert(err);
+  if (!error?.response?.data?.errors) {
+    let err = error?.response?.data?.msg;
+    this.$displayErrorAlert(err);
   } else {
-    let errs = error.response?.data?.errors;
+    let errs = error?.response?.data?.errors;
     for (let i = 0; i < errs.length; i++) {
       const result = errs[i];
-      this.showErrorAlert(result?.msg);
+      this.$displayErrorAlert(result?.msg);
     }
   }
 };

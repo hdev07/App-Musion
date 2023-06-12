@@ -113,7 +113,7 @@ export default {
         };
         const res = await this.$axios.post("/auth/register", body);
         if (res.status === 201) {
-          this.showSuccessAlert("Cuenta creada con exito", 2000);
+          this.$displaySuccessAlert("Cuenta creada con exito", 2000);
           this.$router.push("/home");
         }
       } catch (error) {
@@ -131,7 +131,7 @@ export default {
           this.expiresIn = res.data?.expires;
         }
       } catch (error) {
-        this.showErrorAlert("Error del servidor");
+        this.$displayErrorAlert("Error del servidor");
       }
     },
 

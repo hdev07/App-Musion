@@ -24,6 +24,7 @@ export default {
       this.user = data;
     } catch (e) {
       console.error(e);
+      this.returnErrorAlert(e);
     }
   },
   methods: {

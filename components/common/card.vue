@@ -48,7 +48,7 @@ export default {
       try {
         const res = await this.$axios.delete(`/favorites/${id}`);
         if (res.status === 200)
-          this.showSuccessAlert("Museo eliminado de favoritos");
+          this.$displaySuccessAlert("Museo eliminado de favoritos");
         this.$emit("update-data", true);
       } catch (error) {
         console.log(error);

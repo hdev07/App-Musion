@@ -68,9 +68,9 @@ export default {
       this.perPage = perPage;
       this.currentPage = currentPage;
       this.lastPage = lastPage;
-    } catch (error) {
-      console.error(error);
-      this.returnErrorAlert(error);
+    } catch (e) {
+      console.error(e);
+      this.returnErrorAlert(e);
     }
   },
 

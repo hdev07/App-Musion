@@ -43,7 +43,7 @@ export default {
       try {
         const res = await this.$axios.get("auth/logout");
         if (res?.status === 200) this.$router.push("/login");
-        this.showSuccessAlert(res?.data?.msg);
+        this.$displaySuccessAlert(res?.data?.msg);
       } catch (error) {
         this.returnErrorAlert(error);
       }

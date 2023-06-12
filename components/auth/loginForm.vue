@@ -97,7 +97,7 @@ export default {
         };
         await this.$store.dispatch("auth/login", body);
       } catch (error) {
-        this.returnErrorAlert(error);
+        console.error(error);
       } finally {
         this.resetForm();
       }

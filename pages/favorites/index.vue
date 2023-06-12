@@ -12,6 +12,7 @@
     </div>
     <div class="relative h-44" />
     <Pagination
+      v-if="lastPage !== 0"
       :perPage="perPage"
       :totalPages="lastPage"
       :currentPage="currentPage"
@@ -51,6 +52,7 @@ export default {
       this.lastPage = lastPage;
     } catch (e) {
       console.error(e);
+      this.returnErrorAlert(e);
     }
   },
 

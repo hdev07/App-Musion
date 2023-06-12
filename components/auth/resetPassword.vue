@@ -156,7 +156,7 @@ export default {
           body
         );
         this.sendLink = true;
-        this.showSuccessAlert(data.msg, 5000);
+        this.$displaySuccessAlert(data.msg, 5000);
       } catch (error) {
         this.returnErrorAlert(error);
       } finally {
@@ -172,7 +172,7 @@ export default {
         };
         const { data } = await this.$axios.post("/auth/reset-password/", body);
         this.sendNewPassword = true;
-        this.showSuccessAlert(data.msg, 5000);
+        this.$displaySuccessAlert(data.msg, 5000);
       } catch (error) {
         this.returnErrorAlert(error);
       } finally {

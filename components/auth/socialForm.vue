@@ -19,13 +19,13 @@ export default {
   },
   methods: {
     googleLogin() {
-      this.showErrorAlert("Pronto estará la integración con Google");
+      this.$displayErrorAlert("Pronto estará la integración con Google");
     },
     fbLogin() {
-      this.showErrorAlert("Pronto estará la integración con Facebook");
+      this.$displayErrorAlert("Pronto estará la integración con Facebook");
     },
     appleLogin() {
-      this.showErrorAlert("Pronto estará la integración con Apple");
+      this.$displayErrorAlert("Pronto estará la integración con Apple");
     },
   },
 };

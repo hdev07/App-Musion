@@ -111,27 +111,11 @@ export default {
           password: this.password,
           repassword: this.rePassword,
         };
-        const res = await this.$axios.post("/auth/register", body);
-        if (res.status === 201) {
-          this.$displaySuccessAlert("Cuenta creada con exito", 2000);
-          this.$router.push("/home");
-        }
+        await this.$store.dispatch("auth/register", body);
       } catch (error) {
-        this.returnErrorAlert(error);
+        console.error(error);
       } finally {
         this.resetForm();
-      }
-    },
-
-    async refreshToken() {
-      try {
-        const res = await this.$axios.get("/auth/refresh");
-        if (res.status === 200) {
-          this.token = res.data?.token;
-          this.expiresIn = res.data?.expires;
-        }
-      } catch (error) {
-        this.$displayErrorAlert("Error del servidor");
       }
     },
 

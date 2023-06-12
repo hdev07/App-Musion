@@ -16,7 +16,32 @@ export const actions = {
       if (res.status === 200) {
         commit("setToken", res.data?.token);
         commit("setExpiresIn", res.data?.expiresIn);
-        Vue.prototype.$displaySuccessAlert("Inicio de sesión exitoso");
+        Vue.prototype.$displaySuccessAlert("Inicio de sesión exitoso", 2000);
+        dispatch("refreshToken");
+        this.$router.push("/home");
+      }
+    } catch (error) {
+      const e = error.response?.data?.msg;
+      Vue.prototype.$displayErrorAlert(e);
+    }
+  },
+
+  async register(
+    { commit, dispatch, state },
+    { name, email, password, repassword }
+  ) {
+    try {
+      const body = {
+        name,
+        email,
+        password,
+        repassword,
+      };
+      const res = await this.$axios.post("/auth/register", body);
+      if (res.status === 201) {
+        commit("setToken", res.data?.token);
+        commit("setExpiresIn", res.data?.expiresIn);
+        Vue.prototype.$displaySuccessAlert("Cuenta creada con éxito", 2000);
         dispatch("refreshToken");
         this.$router.push("/home");
       }
@@ -41,7 +66,6 @@ export const actions = {
       }
     } catch (error) {
       const e = error.response?.data?.msg;
-
       Vue.prototype.$displayErrorAlert(e);
     }
   },

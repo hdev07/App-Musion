@@ -17,6 +17,13 @@
           @close="infoWinOpen = false"
         />
 
+        <google-map-marker
+          :google="google"
+          :map="map"
+          :marker="center"
+          icon="https://icons8.com/icon/zkYeARlUU2up/map-pin"
+        />
+
         <google-map-cluster
           :google="google"
           :map="map"
@@ -73,6 +80,7 @@ export default {
         zoom: 16,
         disableDefaultUI: true,
         mapId: "58ef9cdd676f8266",
+        minZoom: 2,
       };
     },
   },
@@ -110,7 +118,7 @@ export default {
             };
           });
         }
-      } catch (e) {
+      } catch (error) {
         console.log("error :>> ", error);
       }
     },
@@ -127,7 +135,7 @@ export default {
       }
     },
     handleCreatedMapMarkers(mapMarkers) {
-      this.mapMarkers = [];
+      this.mapMarkers = mapMarkers;
     },
   },
 };

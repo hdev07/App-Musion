@@ -2,7 +2,6 @@
   <div>
     <!-- <Search /> -->
     <MuseumsMap :markers="markers" />
-    <h1 class="text-center underline">Hola estas en el Mapa</h1>
     <Navbar :activeTab="activeTab" @update:activeTab="updateActiveTab" />
   </div>
 </template>

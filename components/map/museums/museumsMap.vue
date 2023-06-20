@@ -37,7 +37,7 @@
     <!-- Modal para solicitar permiso de ubicación -->
     <div
       v-if="!hasLocationPermission"
-      class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-white/70"
+      class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-white/30"
     >
       <div class="mx-3 bg-secondary text-white p-5 rounded-md text-center">
         <h2>Permiso de ubicación</h2>
@@ -105,6 +105,16 @@ export default {
         disableDefaultUI: true,
         mapId: "58ef9cdd676f8266",
         minZoom: 2,
+        maxZoom: 18,
+        restriction: {
+          latLngBounds: {
+            north: 85, // Límite norte máximo
+            south: -85, // Límite sur máximo
+            east: 180, // Límite este máximo
+            west: -180, // Límite oeste máximo
+          },
+          strictBounds: true,
+        },
       };
     },
   },

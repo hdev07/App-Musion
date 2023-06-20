@@ -105,7 +105,7 @@ export default {
         disableDefaultUI: true,
         mapId: "58ef9cdd676f8266",
         minZoom: 2,
-        maxZoom: 18,
+        maxZoom: 19,
         restriction: {
           latLngBounds: {
             north: 85, // Límite norte máximo

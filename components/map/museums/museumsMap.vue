@@ -33,6 +33,29 @@
         />
       </template>
     </google-map-loader>
+
+    <!-- Modal para solicitar permiso de ubicación -->
+    <div
+      v-if="!hasLocationPermission"
+      class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-white/70"
+    >
+      <div class="mx-3 bg-secondary text-white p-5 rounded-md text-center">
+        <h2>Permiso de ubicación</h2>
+        <p>
+          Este sitio web desea acceder a tu ubicación para mostrarte el mapa
+          cercano a ti.
+        </p>
+        <v-btn
+          color="primary"
+          class="mr-4"
+          block
+          fill
+          rounded
+          @click="grantLocationPermission"
+          >Permitir ubicación
+        </v-btn>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -68,6 +91,7 @@ export default {
           height: -35,
         },
       },
+      hasLocationPermission: false,
     };
   },
   computed: {
@@ -111,15 +135,53 @@ export default {
     getUserLocation() {
       try {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((position) => {
-            this.center = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            };
-          });
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              this.center = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+              this.hasLocationPermission = true;
+            },
+            () => {
+              this.hasLocationPermission = false;
+            }
+          );
         }
       } catch (error) {
         console.log("error :>> ", error);
+        this.hasLocationPermission = false;
+      }
+    },
+    grantLocationPermission() {
+      try {
+        if (navigator.permissions) {
+          navigator.permissions
+            .query({ name: "geolocation" })
+            .then((result) => {
+              if (result.state === "granted") {
+                this.getUserLocation();
+              } else if (result.state === "prompt") {
+                navigator.geolocation.getCurrentPosition(
+                  (position) => {
+                    this.center = {
+                      lat: position.coords.latitude,
+                      lng: position.coords.longitude,
+                    };
+                    this.hasLocationPermission = true;
+                  },
+                  () => {
+                    this.hasLocationPermission = false;
+                  }
+                );
+              } else {
+                this.hasLocationPermission = false;
+              }
+            });
+        }
+      } catch (error) {
+        console.log("error :>> ", error);
+        this.hasLocationPermission = false;
       }
     },
     handleClickMarker(marker, index) {
